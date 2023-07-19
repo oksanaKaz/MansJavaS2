@@ -33,15 +33,13 @@ async function addProduct(productData) {
         },
         body: JSON.stringify(productData)
     }).then(response => {
-            if (!response.ok) {
-                showStatusMessage('Error adding product', 'danger');
-            }
-            console.log(response);
-        })
-        .then(() => {
+        if (!response.ok) {
+            showStatusMessage('Error adding product', 'danger');
+        } else {
             showStatusMessage('Product added successfully', 'success');
             clearForm();
-        })
+        }
+    })
         .catch(error => {
             console.error('Error adding product:', error);
             showStatusMessage('Error adding product', 'danger');
